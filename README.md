@@ -20,3 +20,9 @@ localhost berarti koneksi akan dilakukan ke mesin yang sama di mana program ini 
 - `5672` adalah nomor port standar untuk server AMQP.
 
 Jadi, `guest:guest@localhost:5672` berarti program akan mencoba terhubung ke server AMQP menggunakan kredensial default (`guest:guest`) pada host yang sama (`localhost`) dan port yang spesifik (`5672`).
+
+## Simulation slow subscriber
+
+![image](https://github.com/fathonidf-Adpro/tutorial-8-publisher/assets/105644250/055f1690-7e81-4de3-97cc-f528f62616cc)
+
+Pada message broker saya terdapat 15 message dalam queue, hal ini karena saya menjalani `cargo run` sebanyak 4 kali secara cepat ditambah dengan adanya `thread::sleep(ten_millis);` pada publisher yang menjadi buffer untuk menunggu setiap thread untuk menerima message, dalam hal ini maka program saya maksimal terdapat 15 message yang mengantri dalam queue tersebut.
